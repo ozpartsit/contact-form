@@ -39,7 +39,7 @@ The response to such request is a JSON with the following 5 fields:
 Complete the missing feature:
 
  1. getCountries() - Use API to get the countries list (return Array of Objects),
- 2. Display informations about selected country [\[screen\]](https://raw.githubusercontent.com/ozpartsit/contact-form/bfef457bf6c889f925a4ae408f5a45d3a0aeb20b/example.jpg)
+ 2. Display informations about selected country, example: [\[screen\]](https://raw.githubusercontent.com/ozpartsit/contact-form/bfef457bf6c889f925a4ae408f5a45d3a0aeb20b/example.jpg)
  3. Use Version Control (at least two commits)
 
 ## Useful Links
