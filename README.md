@@ -42,7 +42,7 @@ Complete the missing feature:
  2. Display informations about selected country [\[screen\]](https://raw.githubusercontent.com/ozpartsit/contact-form/bfef457bf6c889f925a4ae408f5a45d3a0aeb20b/example.jpg)
  3. Use Version Control (at least two commits)
 
-## Uswful Links
+## Useful Links
 
  - VUE - Framework for building web user interfaces: https://vuejs.org/
  - Vuetify - Vue UI Library: https://vuetifyjs.com/
