@@ -5,20 +5,20 @@ In the provided contact form, the task is to use the API to get the countries li
 The given API uses pagination to return the data divided into pages. Fetching the whole data available on the API requires multiple requests.
 
 To get a single page of countries data, perform HTTP GET request to:
-https://jsonmock.hackerrank.com/api/countries?page=<pageNumber>
-where <pageNumber> is an integer denoting the page number of the results we are requesting.
+https://jsonmock.hackerrank.com/api/countries?page=***pageNumber***
+where ***pageNumber*** is an integer denoting the page number of the results we are requesting.
 
 For example, a GET request to:
 https://jsonmock.hackerrank.com/api/countries?page=2
 will return the second page of the collection of countries. Pages are numbered from 1, so in order to access the first page, you need to ask for page number 1.
 
 To get a single country data, perform HTTP GET request to:
-https://jsonmock.hackerrank.com/api/countries?alpha2Code=<alpha2Code>
-where <alpha2Code> is the two-letter unique code of the country.
+https://jsonmock.hackerrank.com/api/countries?alpha2Code=***alpha2Code***
+where ***alpha2Code*** is the two-letter unique code of the country.
 
 To find countries per name, perform HTTP GET request to:
-https://jsonmock.hackerrank.com/api/countries/search?name=<name>
-where <name> is a string denoting the full name of a country or part of it.
+https://jsonmock.hackerrank.com/api/countries/search?name=***name***
+where ***name*** is a string denoting the full name of a country or part of it.
 
 For example, a GET request to:
 https://jsonmock.hackerrank.com/api/countries/search?name=pol
