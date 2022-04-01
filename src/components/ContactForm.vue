@@ -38,8 +38,22 @@
           :loading="loading"
           clearable
         ></v-autocomplete>
-        <!-- Bagin of informations about the selected country -->
-        <!-- End of informations about the selected country -->
+        <v-container>
+          <v-icon style="color: #3498DB">apartment</v-icon>
+          Capital: {{capital}}
+        </v-container>
+        <v-container>
+          <v-icon style="color: #3498DB">groups</v-icon>
+          Population: {{population}}
+        </v-container>
+        <v-container>
+          <v-icon style="color: #3498DB">language</v-icon>
+          Language: {{language}}
+        </v-container>
+        <v-container>
+          <v-icon style="color: #3498DB">map</v-icon>
+          Region: {{region}}
+        </v-container>
         <v-checkbox
           v-model="checkbox"
           :rules="[(v) => !!v || 'You must agree to continue!']"
