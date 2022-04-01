@@ -79,6 +79,10 @@ export default {
     country: null, //selected country
     countries: [], //list of available countries
     checkbox: false,
+    capital: "",
+    population: "",
+    region: "",
+    language: ""
   }),
   async created() {
     this.loading = true;
@@ -99,6 +103,13 @@ export default {
         morePagesAvailable = currentPage < total_pages;
       }
       return allCountries;
+    },
+    async getInfo(country) {
+      this.capital = `${country.country.capital}`;
+      this.language = `${country.country.language}`;
+      this.population = `${country.country.population}`;
+      this.region = `${country.country.region}`;
+      return `${this.capital} ${this.language} ${this.population} ${this.region}`;
     },
     send() {
       this.valid = this.validation();
