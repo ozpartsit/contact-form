@@ -39,6 +39,8 @@
           clearable
           @change="getInfo(country)"
         ></v-autocomplete>
+        <!-- First version -->
+        <!--
         <v-container>
           <v-icon style="color: #3498DB">apartment</v-icon>
           Capital: {{capital}}
@@ -55,6 +57,7 @@
           <v-icon style="color: #3498DB">map</v-icon>
           Region: {{region}}
         </v-container>
+        -->
         <v-checkbox
           v-model="checkbox"
           :rules="[(v) => !!v || 'You must agree to continue!']"
