@@ -39,10 +39,10 @@
             clearable
             @change="getInfo({country})"
         ></v-autocomplete>
-        <v-row v-if="country" style="border-bottom: solid 1px rgba(128,128,128,0.4)">
-
+        <v-row v-if="country">
           <v-col>
             <v-list>
+
               <v-list-item>
                 <v-list-item-icon>
                   <v-icon color="#3498DB"> mdi-town-hall </v-icon>
@@ -62,17 +62,23 @@
                   <v-list-item-subtitle>Population</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
+
             </v-list>
           </v-col>
 
           <v-col>
             <v-list>
+
               <v-list-item>
                 <v-list-item-icon>
-                  <v-icon color="#3498DB" > language </v-icon>
+                  <v-icon color="#3498DB"> language </v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
-                  <v-list-item-title>{{ language }}</v-list-item-title>
+                  <v-list-item-title style="cursor: pointer"
+                                     @mouseover="upHere = true" @mouseleave="upHere = false">
+                    {{ language }}
+                  </v-list-item-title>
+                  <v-list v-if="restLang" v-show="upHere">{{ restLang }}</v-list>
                   <v-list-item-subtitle> Language </v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
@@ -87,8 +93,8 @@
                 </v-list-item-content>
               </v-list-item>
             </v-list>
-          </v-col>
 
+          </v-col>
         </v-row>
 
         <!-- First version -->
@@ -132,6 +138,7 @@
 export default {
   name: "ContactForm",
   data: () => ({
+    upHere: false,
     loading: false,
     valid: false,
     name: "",
@@ -152,6 +159,7 @@ export default {
     population: "",
     region: "",
     language: "",
+    restLang: null
   }),
   async created() {
     this.loading = true;
@@ -177,10 +185,13 @@ export default {
       this.capital = `${country.country.capital}`;
       let lang = [];
       country.country.language.map((el) => lang.push(el));
-      if (lang.length >= 3) {
-        lang = lang.splice(1, 2).join(", ") + "...";
+      if (lang.length >= 2) {
+        let first = lang.splice(0, 1).join(", ") + `(+${lang.length})`;
+        this.restLang = lang.join(", ");
+        lang = first;
       } else {
-        lang = lang.join(", ")
+        lang = lang.join(", ");
+        this.restLang = null;
       }
       this.language = `${lang}`;
       const pop = country.country.population.toString().match(/(\d+?)(?=(\d{3})+(?!\d)|$)/g);
@@ -201,4 +212,3 @@ export default {
   },
 };
 </script>
-
