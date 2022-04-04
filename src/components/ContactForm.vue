@@ -39,7 +39,7 @@
             clearable
             @change="getInfo({country})"
         ></v-autocomplete>
-        <v-row v-if="country">
+        <v-row v-if="country" style="border-bottom: solid 1px rgba(128,128,128,0.4)">
 
           <v-col>
             <v-list>
@@ -69,7 +69,7 @@
             <v-list>
               <v-list-item>
                 <v-list-item-icon>
-                  <v-icon color="#3498DB"> language </v-icon>
+                  <v-icon color="#3498DB" > language </v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
                   <v-list-item-title>{{ language }}</v-list-item-title>
@@ -175,7 +175,14 @@ export default {
     },
     async getInfo(country) {
       this.capital = `${country.country.capital}`;
-      this.language = `${country.country.language.join(", ")}`;
+      let lang = [];
+      country.country.language.map((el) => lang.push(el));
+      if (lang.length >= 3) {
+        lang = lang.splice(1, 2).join(", ") + "...";
+      } else {
+        lang = lang.join(", ")
+      }
+      this.language = `${lang}`;
       const pop = country.country.population.toString().match(/(\d+?)(?=(\d{3})+(?!\d)|$)/g);
       this.population = `${pop.join(" ")}`;
       this.region = `${country.country.region}`;
