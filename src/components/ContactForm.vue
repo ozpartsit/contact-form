@@ -121,8 +121,9 @@ export default {
     },
     async getInfo(country) {
       this.capital = `${country.country.capital}`;
-      this.language = `${country.country.language}`;
-      this.population = `${country.country.population}`;
+      this.language = `${country.country.language.join(", ")}`;
+      const pop = country.country.population.toString().match(/(\d+?)(?=(\d{3})+(?!\d)|$)/g);
+      this.population = `${pop.join(" ")}`;
       this.region = `${country.country.region}`;
       return `${this.capital} ${this.language} ${this.population} ${this.region}`;
     },
