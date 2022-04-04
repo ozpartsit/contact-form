@@ -37,6 +37,7 @@
           hide-no-data
           :loading="loading"
           clearable
+          @change="getInfo(country)"
         ></v-autocomplete>
         <v-container>
           <v-icon style="color: #3498DB">apartment</v-icon>
