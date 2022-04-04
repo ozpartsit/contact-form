@@ -40,9 +40,9 @@
             @change="getInfo({country})"
         ></v-autocomplete>
         <v-row v-if="country">
+
           <v-col>
             <v-list>
-
               <v-list-item>
                 <v-list-item-icon>
                   <v-icon color="#3498DB"> mdi-town-hall </v-icon>
@@ -62,7 +62,11 @@
                   <v-list-item-subtitle>Population</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
+            </v-list>
+          </v-col>
 
+          <v-col>
+            <v-list>
               <v-list-item>
                 <v-list-item-icon>
                   <v-icon color="#3498DB"> language </v-icon>
@@ -82,9 +86,9 @@
                   <v-list-item-subtitle>Region</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
-
             </v-list>
           </v-col>
+
         </v-row>
 
         <!-- First version -->
