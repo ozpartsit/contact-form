@@ -3,41 +3,41 @@
     <v-card>
       <v-card-text>
         <v-text-field
-          v-model="name"
-          :rules="nameRules"
-          label="Name"
-          required
-          clearable
+            v-model="name"
+            :rules="nameRules"
+            label="Name"
+            required
+            clearable
         ></v-text-field>
         <v-text-field
-          v-model="lastname"
-          :rules="nameRules"
-          label="Last Name"
-          required
-          clearable
+            v-model="lastname"
+            :rules="nameRules"
+            label="Last Name"
+            required
+            clearable
         ></v-text-field>
         <v-text-field
-          prepend-icon="mdi-email"
-          v-model="email"
-          :rules="emailRules"
-          label="Contact e-mail"
-          required
-          clearable
+            prepend-icon="mdi-email"
+            v-model="email"
+            :rules="emailRules"
+            label="Contact e-mail"
+            required
+            clearable
         ></v-text-field>
         <v-autocomplete
-          v-model="country"
-          :items="countries"
-          item-text="name"
-          item-value="alpha2Code"
-          :rules="[(v) => !!v || 'field is required']"
-          label="Purpose of the trip"
-          return-object
-          required
-          append-icon="mdi-airplane-search"
-          hide-no-data
-          :loading="loading"
-          clearable
-          @change="getInfo(country)"
+            v-model="country"
+            :items="countries"
+            item-text="name"
+            item-value="alpha2Code"
+            :rules="[(v) => !!v || 'field is required']"
+            label="Purpose of the trip"
+            return-object
+            required
+            append-icon="mdi-airplane-search"
+            hide-no-data
+            :loading="loading"
+            clearable
+            @change="getInfo({country})"
         ></v-autocomplete>
         <v-row v-if="country">
           <v-col>
@@ -86,9 +86,9 @@
             </v-list>
           </v-col>
         </v-row>
+
         <!-- First version -->
-        <!--
-        <v-container>
+        <!-- <v-container>
           <v-icon style="color: #3498DB">apartment</v-icon>
           Capital: {{capital}}
         </v-container>
@@ -103,14 +103,14 @@
         <v-container>
           <v-icon style="color: #3498DB">map</v-icon>
           Region: {{region}}
-        </v-container>
-        -->
+        </v-container> -->
+
         <v-checkbox
-          v-model="checkbox"
-          :rules="[(v) => !!v || 'You must agree to continue!']"
-          label="I agree to the terms and conditions"
-          required
-          hide-details
+            v-model="checkbox"
+            :rules="[(v) => !!v || 'You must agree to continue!']"
+            label="I agree to the terms and conditions"
+            required
+            hide-details
         ></v-checkbox>
       </v-card-text>
       <v-card-actions>
@@ -147,7 +147,7 @@ export default {
     capital: "",
     population: "",
     region: "",
-    language: ""
+    language: "",
   }),
   async created() {
     this.loading = true;
