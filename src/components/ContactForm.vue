@@ -39,7 +39,7 @@
           clearable
         ></v-autocomplete>
         <!-- Bagin of informations about the selected country -->
-        <v-container>
+        <v-container v-if="country">
           <v-row>
             <v-col class="d-flex">
               <v-icon style="color: #3498db">account_balance</v-icon>
@@ -73,7 +73,7 @@
             </v-col>
           </v-row>
         </v-container>
-        <hr />
+        <hr v-if="country"/>
         <!-- End of informations about the selected country -->
         <v-checkbox
           v-model="checkbox"
