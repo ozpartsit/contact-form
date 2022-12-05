@@ -39,6 +39,41 @@
           clearable
         ></v-autocomplete>
         <!-- Bagin of informations about the selected country -->
+        <v-container>
+          <v-row>
+            <v-col class="d-flex">
+              <v-icon style="color: #3498db">account_balance</v-icon>
+              <div class="d-flex flex-column pl-6">
+                <div>Prague</div>
+                <div class="text-caption">Capital</div>
+              </div>
+            </v-col>
+            <v-col class="d-flex">
+              <v-icon style="color: #3498db">language</v-icon>
+              <div class="d-flex flex-column pl-6">
+                <div>Czech</div>
+                <div class="text-caption">Language</div>
+              </div>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col class="d-flex">
+              <v-icon style="color: #3498db">groups_2</v-icon>
+              <div class="d-flex flex-column pl-6">
+                <div>10 537 818</div>
+                <div class="text-caption">Population</div>
+              </div>
+            </v-col>
+            <v-col class="d-flex">
+              <v-icon style="color: #3498db">map</v-icon>
+              <div class="d-flex flex-column pl-6">
+                <div>Europe</div>
+                <div class="text-caption">Region</div>
+              </div>
+            </v-col>
+          </v-row>
+        </v-container>
+        <hr />
         <!-- End of informations about the selected country -->
         <v-checkbox
           v-model="checkbox"
