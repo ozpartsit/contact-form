@@ -87,14 +87,19 @@ export default {
   },
   methods: {
     async getCountries() {
-      //
-      // Read me:
-      // URI:https://jsonmock.hackerrank.com/api/countries
-      // start your code
-      //
-      //
-      // return countries
-      //
+      let countries = [];
+      let page = 1;
+      let isMore = true;
+      while (isMore) {
+        const res = await fetch(
+            `https://jsonmock.hackerrank.com/api/countries?page=${page}`
+        );
+        const { total_pages, data } = await res.json();
+        countries.push(...data);
+        page++;
+        isMore = page <= total_pages;
+      }
+      return countries;
     },
     send() {
       this.valid = this.validation();
