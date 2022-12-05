@@ -44,14 +44,14 @@
             <v-col class="d-flex">
               <v-icon style="color: #3498db">account_balance</v-icon>
               <div class="d-flex flex-column pl-6">
-                <div>{{ country.capital }}</div>
+                <div class="black--text">{{ country.capital }}</div>
                 <div class="text-caption">Capital</div>
               </div>
             </v-col>
             <v-col class="d-flex">
               <v-icon style="color: #3498db">language</v-icon>
               <div class="d-flex flex-column pl-6">
-                <div>{{ country.language[0] }}</div>
+                <div class="black--text">{{ country.language[0] }}</div>
                 <div class="text-caption">Language</div>
               </div>
             </v-col>
@@ -60,14 +60,14 @@
             <v-col class="d-flex">
               <v-icon style="color: #3498db">groups_2</v-icon>
               <div class="d-flex flex-column pl-6">
-                <div>{{ country.population.toLocaleString() }}</div>
+                <div class="black--text">{{ country.population.toLocaleString() }}</div>
                 <div class="text-caption">Population</div>
               </div>
             </v-col>
             <v-col class="d-flex">
               <v-icon style="color: #3498db">map</v-icon>
               <div class="d-flex flex-column pl-6">
-                <div>{{ country.region }}</div>
+                <div class="black--text">{{ country.region }}</div>
                 <div class="text-caption">Region</div>
               </div>
             </v-col>
