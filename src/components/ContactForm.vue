@@ -39,6 +39,41 @@
           clearable
         ></v-autocomplete>
         <!-- Bagin of informations about the selected country -->
+        <v-container v-if="country">
+          <v-row>
+            <v-col class="d-flex">
+              <v-icon style="color: #3498db">account_balance</v-icon>
+              <div class="d-flex flex-column pl-6">
+                <div class="black--text">{{ country.capital }}</div>
+                <div class="text-caption">Capital</div>
+              </div>
+            </v-col>
+            <v-col class="d-flex">
+              <v-icon style="color: #3498db">language</v-icon>
+              <div class="d-flex flex-column pl-6">
+                <div class="black--text">{{ country.language[0] }}</div>
+                <div class="text-caption">Language</div>
+              </div>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col class="d-flex">
+              <v-icon style="color: #3498db">groups_2</v-icon>
+              <div class="d-flex flex-column pl-6">
+                <div class="black--text">{{ country.population.toLocaleString() }}</div>
+                <div class="text-caption">Population</div>
+              </div>
+            </v-col>
+            <v-col class="d-flex">
+              <v-icon style="color: #3498db">map</v-icon>
+              <div class="d-flex flex-column pl-6">
+                <div class="black--text">{{ country.region }}</div>
+                <div class="text-caption">Region</div>
+              </div>
+            </v-col>
+          </v-row>
+        </v-container>
+        <hr v-if="country"/>
         <!-- End of informations about the selected country -->
         <v-checkbox
           v-model="checkbox"
@@ -87,14 +122,19 @@ export default {
   },
   methods: {
     async getCountries() {
-      //
-      // Read me:
-      // URI:https://jsonmock.hackerrank.com/api/countries
-      // start your code
-      //
-      //
-      // return countries
-      //
+      let countries = [];
+      let page = 1;
+      let isMore = true;
+      while (isMore) {
+        const res = await fetch(
+            `https://jsonmock.hackerrank.com/api/countries?page=${page}`
+        );
+        const { total_pages, data } = await res.json();
+        countries.push(...data);
+        page++;
+        isMore = page <= total_pages;
+      }
+      return countries;
     },
     send() {
       this.valid = this.validation();
