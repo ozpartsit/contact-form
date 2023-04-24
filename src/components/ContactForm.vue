@@ -60,6 +60,7 @@
 </template>
 
 <script>
+
 export default {
   name: "ContactForm",
   data: () => ({
@@ -80,33 +81,39 @@ export default {
     countries: [], //list of available countries
     checkbox: false,
   }),
-  async created() {
-    this.loading = true;
-    this.countries = await this.getCountries();
-    this.loading = false;
+  async created () {
+    this.loading = true
+    this.countries = await this.getCountries()
+    this.loading = false
   },
   methods: {
-    async getCountries() {
-      //
-      // Read me:
-      // URI:https://jsonmock.hackerrank.com/api/countries
-      // start your code
-      //
-      //
-      // return countries
-      //
+    async getCountries () {
+      let totalPages
+      let countries = []
+
+      // Getting total number of pages
+      const totalPagesResponse = await fetch("https://jsonmock.hackerrank.com/api/countries")
+      const totalPagesData = await totalPagesResponse.json()
+      totalPages = totalPagesData.total_pages
+
+      // Fetching list of all countries
+      for (let i = 1; i <= totalPages; i++) {
+        const response = await fetch(`https://jsonmock.hackerrank.com/api/countries?page=${i}`)
+        const data = await response.json()
+        countries = countries.concat(data.data)
+      }
+      return countries
     },
-    send() {
-      this.valid = this.validation();
-      if (this.valid) alert("The application has been sent!");
+    send () {
+      this.valid = this.validation()
+      if (this.valid) alert("The application has been sent!")
     },
-    reset() {
-      this.$refs.form.reset();
+    reset () {
+      this.$refs.form.reset()
     },
-    validation() {
-      return this.$refs.form.validate();
+    validation () {
+      return this.$refs.form.validate()
     },
   },
-};
+}
 </script>
-
