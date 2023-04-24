@@ -39,6 +39,41 @@
           clearable
         ></v-autocomplete>
         <!-- Bagin of informations about the selected country -->
+
+        <v-list v-if="country !== null" two-line>
+          <v-list-item>
+            <v-list-item-avatar>
+              <v-icon> mdi-town-hall </v-icon>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title v-text="country.capital"></v-list-item-title>
+              <v-list-item-subtitle>Capital</v-list-item-subtitle>
+            </v-list-item-content>
+            <v-list-item-avatar>
+              <v-icon> mdi-web </v-icon>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title v-text="country.language[0]"></v-list-item-title>
+              <v-list-item-subtitle>Language</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-avatar>
+              <v-icon> mdi-account-group </v-icon>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title v-text="country.population"></v-list-item-title>
+              <v-list-item-subtitle>Population</v-list-item-subtitle>
+            </v-list-item-content>
+            <v-list-item-avatar>
+              <v-icon> mdi-map-search-outline </v-icon>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title v-text="country.region"></v-list-item-title>
+              <v-list-item-subtitle>Region</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
         <!-- End of informations about the selected country -->
         <v-checkbox
           v-model="checkbox"
