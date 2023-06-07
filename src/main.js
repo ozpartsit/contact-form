@@ -1,14 +1,14 @@
-import Vue from "vue";
-import App from "./App.vue";
-import Vuetify from "vuetify";
-import "vuetify/dist/vuetify.min.css";
+import { createApp } from 'vue';
+import App from './App.vue';
 
-Vue.config.productionTip = false;
-Vue.use(Vuetify);
-new Vue({
-  el: "#app",
-  components: { App },
-  template: "<App/>",
-  vuetify: new Vuetify({}),
-  render: (h) => h(App)
-}).$mount("#app");
+// Vuetify
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+
+const vuetify = createVuetify({
+  components,
+  directives,})
+
+createApp(App).use(vuetify).mount('#app');
