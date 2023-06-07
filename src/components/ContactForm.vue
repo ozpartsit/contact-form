@@ -43,6 +43,59 @@
             color="blue"
         ></v-autocomplete>
         <!-- Begin of informations about the selected country -->
+        <v-container  v-if="country">
+          <v-row>
+            <v-col class="v-col-12 v-col-sm-6">
+              <v-row class="align-center">
+                <v-col class="v-col-3">
+                  <v-icon color="blue" size="large"> mdi-town-hall</v-icon>
+                </v-col>
+                <v-col class="v-col-9">
+                  <p class="text-subtitle-1">{{ country.capital }}</p>
+                  <p class="text-body-2 text-grey-darken-1">Capital</p>
+                </v-col>
+              </v-row>
+            </v-col>
+
+            <v-col class="v-col-12 v-col-sm-6">
+              <v-row class="align-center">
+                <v-col class="v-col-3">
+                  <v-icon color="blue" size="large"> mdi-web </v-icon>
+                </v-col>
+                <v-col class="v-col-9">
+                  <p class="text-subtitle-1">{{ country.language[0] }}</p>
+                  <p class="text-body-2 text-grey-darken-1">Language</p>
+                </v-col>
+              </v-row>
+            </v-col>
+
+            <v-col class="v-col-12 v-col-sm-6">
+              <v-row class="align-center">
+                <v-col class="v-col-3">
+                  <v-icon color="blue" size="large">mdi-account-group</v-icon>
+                </v-col>
+                <v-col class="v-col-9">
+                  <p class="text-subtitle-1">{{ country.population }}</p>
+                  <p class="text-body-2 text-grey-darken-1">Population</p>
+                </v-col>
+              </v-row>
+            </v-col>
+
+            <v-col class="v-col-12 v-col-sm-6">
+              <v-row class="align-center">
+                <v-col class="v-col-3">
+                  <v-icon color="blue" size="large"> mdi-map-search-outline</v-icon>
+                </v-col>
+                <v-col class="v-col-9">
+                  <p class="text-subtitle-1">{{ country.region }}</p>
+                  <p class="text-body-2 text-grey-darken-1">Region</p>
+                </v-col>
+              </v-row>
+
+            </v-col>
+          </v-row>
+
+        </v-container>
         <!-- End of informations about the selected country -->
         <v-checkbox
             v-model="checkbox"
