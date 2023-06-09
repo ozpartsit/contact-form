@@ -37,7 +37,51 @@
           hide-no-data
           :loading="loading"
           clearable
+          @change="getCountryData"
         ></v-autocomplete>
+        <div v-if="this.country !== null & this.country !== undefined">
+        <v-row class="px-2 text-center">
+          <v-col class="d-flex align-center justify-center" cols="12"
+                 md="6"
+                 sm="6">
+            <v-icon size="30">mdi-town-hall</v-icon>
+            <v-col>
+              <div>{{ countryData.data[0]? countryData.data[0].capital : ''}}</div>
+              <div>Capital</div>
+            </v-col>
+          </v-col>
+          <v-col class="d-flex align-center justify-center" cols="12"
+                 md="6"
+                 sm="6">
+            <v-icon size="30">mdi-web</v-icon>
+            <v-col>
+              <div>{{ countryData.data[0] ? countryData.data[0].language.join(", ") : ''}}</div>
+              <div>Language</div>
+            </v-col>
+          </v-col>
+        </v-row>
+        <v-row class="px-2 text-center">
+          <v-col class="d-flex align-center justify-center" cols="12"
+                 md="6"
+                 sm="6">
+            <v-icon size="30">mdi-account-group</v-icon>
+            <v-col>
+              <div>{{ countryData.data[0] ? countryData.data[0].population : ''}}</div>
+              <div>Population</div>
+            </v-col>
+          </v-col>
+          <v-col class="d-flex align-center justify-center" cols="12"
+                 md="6"
+                 sm="6">
+            <v-icon size="30">mdi-map-search-outline</v-icon>
+            <v-col>
+              <div>{{ countryData.data[0] ? countryData.data[0].region : ''}}</div>
+              <div>Region</div>
+            </v-col>
+          </v-col>
+        </v-row>
+        </div>
+        <v-divider/>
         <!-- Bagin of informations about the selected country -->
         <!-- End of informations about the selected country -->
         <v-checkbox
@@ -79,6 +123,7 @@ export default {
     ],
     country: null, //selected country
     countries: [], //list of available countries
+    countryData: null,
     checkbox: false,
   }),
   async created() {
@@ -93,7 +138,7 @@ export default {
 
       for(let i = 1; i <= totalPages; i++) {
         try {
-          const data = await CountryService.load(i);
+          const data = await CountryService.loadCountries(i);
           const countries = data.data.map(country => ({
             name: country.name,
             alpha2Code: country.alpha2Code
@@ -105,6 +150,18 @@ export default {
       }
       this.loading = false;
 
+    },
+    async getCountryData(){
+      if (this.country !== null & this.country !== undefined) {
+        try {
+          const data = await CountryService.loadCountryData(this.country.name);
+          this.countryData = data
+        }catch (error) {
+          console.log(error)
+        }
+        } else {
+        return;
+      }
     },
     send() {
       this.valid = this.validation();
