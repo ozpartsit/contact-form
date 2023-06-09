@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import CountryService from "@/services/country.service";
 export default {
   name: "ContactForm",
   data: () => ({
@@ -82,19 +83,28 @@ export default {
   }),
   async created() {
     this.loading = true;
-    this.countries = await this.getCountries();
+    await this.getCountries();
     this.loading = false;
   },
   methods: {
     async getCountries() {
-      //
-      // Read me:
-      // URI:https://jsonmock.hackerrank.com/api/countries
-      // start your code
-      //
-      //
-      // return countries
-      //
+      const totalPages = 25;
+      this.loading = true;
+
+      for(let i = 1; i <= totalPages; i++) {
+        try {
+          const data = await CountryService.load(i);
+          const countries = data.data.map(country => ({
+            name: country.name,
+            alpha2Code: country.alpha2Code
+          }));
+          this.countries = this.countries.concat(countries);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      this.loading = false;
+
     },
     send() {
       this.valid = this.validation();
